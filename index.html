@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu - Cao Khánh Duy v3 👑</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .led-text {
+      font-size: 30px;
+      font-weight: bold;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, purple, red);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: ledColor 5s linear infinite;
+    }
+
+    @keyframes ledColor {
+      0% { background-position: 0% }
+      100% { background-position: 400% }
+    }
+
+    .login-container, .menu-container {
+      display: none;
+      padding: 50px 20px;
+    }
+
+    .login-container.active, .menu-container.active {
+      display: block;
+    }
+
+    .led-box {
+      border: 3px solid transparent;
+      border-radius: 15px;
+      padding: 20px;
+      background-color: #111;
+      background-image: linear-gradient(#111, #111), linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: 400%;
+      animation: ledBorder 5s linear infinite;
+      width: 95%;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    @keyframes ledBorder {
+      0% { background-position: 0% 0%, 0% 0%; }
+      100% { background-position: 0% 0%, 200% 0%; }
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      margin: 10px;
+      width: 220px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #ff6600;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .tabs {
+      margin: 20px 0;
+    }
+
+    .tab-btn {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: #ff6600;
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .option-box {
+      background: #1c1c1c;
+      border: 2px solid #444;
+      border-radius: 5px;
+      margin: 10px auto;
+      padding: 8px 12px;
+      width: 85%;
+      max-width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .option-box label {
+      font-size: 16px;
+    }
+
+    .option-box input[type="checkbox"] {
+      transform: scale(1.4);
+      cursor: pointer;
+    }
+
+    
+#logoToggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 125px;
+  height: 125px;
+  z-index: 9999;
+  cursor: move;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 15px red;
+}
+
+
+    .bottom-buttons {
+      margin-top: 30px;
+    }
+
+    .bottom-buttons button {
+      background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, purple);
+      background-size: 300%;
+      animation: ledColor 3s linear infinite;
+      color: white;
+      font-weight: bold;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-container.hidden {
+      display: none !important;
+    }
+  
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, purple);
+  background-size: 400%;
+  animation: ledColor 5s linear infinite;
+  outline: none;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border: 2px solid #ff6600;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 10px red;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border: 2px solid #ff6600;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 10px red;
+}
+
+</style>
+</head>
+<body>
+
+<div style="width: 100%; overflow: hidden; background: black; margin-top: 10px;">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    <span class="led-text" style="font-size: 70px;">✨ CHÀO MỪNG BẠN ĐẾN VỚI - CAO KHÁNH DUY 👑 ✨</span>
+  </marquee>
+</div>
+
+
+  <img src="https://sv1.anhsieuviet.com/2025/06/14/IMG_0018.jpg" id="logoToggle" onclick="toggleMenu()" alt="Toggle Menu">
+
+  <div class="login-container active" id="loginPage">
+    <div class="led-box">
+      <h1 class="led-text">⚡ Đăng nhập hệ thống ⚡</h1>
+      <input type="text" id="username" placeholder="Tài khoản"><br>
+      <input type="password" id="password" placeholder="Mật khẩu"><br>
+      <button onclick="login()">Đăng nhập</button>
+      <p id="loginError" style="color:red; display:none;">❌ Sai tài khoản hoặc mật khẩu!</p>
+    </div>
+  </div>
+
+  <div class="menu-container" id="menuPage">
+    <h1 class="led-text">👑 Menu - Cao Khánh Duy v3 👑</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="openTab('esp')">ESP</button>
+      <button class="tab-btn" onclick="openTab('aim')">AIM</button>
+    </div>
+
+    <div id="esp" class="tab-content active">
+      <div class="led-box">
+        <h2>🎯 ESP Options</h2>
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 45%;">
+            <div class="option-box"><label>Draw ESP</label><input type="checkbox"></div>
+            <div class="option-box"><label>Hide Hack</label><input type="checkbox"></div>
+            <div class="option-box"><label>Name</label><input type="checkbox"></div>
+          </div>
+          <div style="flex: 1; min-width: 45%;">
+            <div class="option-box"><label>Box</label><input type="checkbox"></div>
+            <div class="option-box"><label>Line</label><input type="checkbox"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="aim" class="tab-content">
+      <div class="led-box">
+        <h2>🔫 AIM Options</h2>
+
+        <div class="option-box"><label>Aim Bot</label><input type="checkbox"></div>
+        <div class="option-box"><label>Aim Wukong</label><input type="checkbox"></div>
+        <div class="option-box"><label>Skip Knocker</label><input type="checkbox"></div>
+        <div class="option-box"><label>Skip VisCheck</label><input type="checkbox"></div>
+
+        <div class="led-box" style="margin-top: 20px;">
+          <label style="font-size: 16px;">🎯 Tỉ lệ Headshot: <span id="headshotVal">50%</span></label><br><br>
+          <input type="range" min="1" max="100" value="50" id="headshotRange" oninput="updateRange(this.value)">
+          <br><br>
+          <label for="aimMode" style="font-size: 16px;">🎯 Aim Mode:</label><br>
+          <select id="aimMode" style="padding:6px 10px; font-size:16px; margin-top:10px;">
+            <option>None</option>
+            <option>Fire</option>
+            <option>Scope</option>
+            <option>Fire + Scope</option>
+          </select>
+        </div>
+
+        <div class="led-box" style="margin-top: 20px;">
+          <label style="font-size: 16px;">📏 FOV: <span id="fovVal">250</span></label><br><br>
+          <input type="range" min="0" max="500" value="250" id="fovRange" oninput="updateFOV(this.value)">
+          <br><br>
+          <label for="aimStyle" style="font-size: 16px;">🎯 Style Aim:</label><br>
+          <select id="aimStyle" style="padding:6px 10px; font-size:16px; margin-top:10px;">
+            <option>Aim FOV</option>
+            <option>Aim 180</option>
+            <option>Aim 360</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button onclick="alert('📥 Đang tải Hack...')">📥 Tải Hack</button>
+      <button onclick="alert('⚙️ Mở Cài Đặt...')">⚙️ Cài đặt</button>
+      <button onclick="location.reload()">❌ Thoát</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "CAOKHANHDUY" && pass === "CAOKHANHDUY") {
+        document.getElementById("loginPage").classList.remove("active");
+        document.getElementById("menuPage").classList.add("active");
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    }
+
+    function openTab(tabId) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+      document.querySelector(`.tab-btn[onclick*="${tabId}"]`).classList.add("active");
+      document.getElementById(tabId).classList.add("active");
+    }
+
+    function updateRange(val) {
+      document.getElementById("headshotVal").textContent = val + "%";
+    }
+
+    function updateFOV(val) {
+      document.getElementById("fovVal").textContent = val;
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("menuPage");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+
+
+
+
+<script>
+  const logo = document.getElementById("logoToggle");
+  let isDragging = false;
+  let offsetX = 0, offsetY = 0;
+
+  function startDrag(x, y) {
+    isDragging = true;
+    offsetX = x - logo.getBoundingClientRect().left;
+    offsetY = y - logo.getBoundingClientRect().top;
+  }
+
+  function duringDrag(x, y) {
+    if (isDragging) {
+      logo.style.left = (x - offsetX) + "px";
+      logo.style.top = (y - offsetY) + "px";
+    }
+  }
+
+  logo.addEventListener("mousedown", function(e) {
+    startDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener("mousemove", function(e) {
+    duringDrag(e.clientX, e.clientY);
+  });
+
+  document.addEventListener("mouseup", function() {
+    isDragging = false;
+  });
+
+  // Touch events for mobile
+  logo.addEventListener("touchstart", function(e) {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  });
+
+  document.addEventListener("touchmove", function(e) {
+    const touch = e.touches[0];
+    duringDrag(touch.clientX, touch.clientY);
+  });
+
+  document.addEventListener("touchend", function() {
+    isDragging = false;
+  });
+</script>
+
+</body>
+</html>
